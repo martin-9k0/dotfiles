@@ -1,0 +1,38 @@
+unbind C-b
+set -g prefix C-a
+
+#bindings
+ bind-key -n S-down new-window
+ bind-key -n S-left prev
+ bind-key -n S-right next
+ bind-key -n C-left swap-window -t -1
+ bind-key -n C-right swap-window -t +1
+
+#activity
+ set -g window-status-activity-attr bold
+ setw -g monitor-activity off
+
+#status bar
+ set -g status-bg default
+ set -g status-fg default
+ set -g status-justify centre
+ set -g status-left ""
+ set -g status-right ""
+ set -g status-position top
+ setw -g window-status-current-attr none
+ setw -g window-status-current-bg default
+ setw -g window-status-current-fg magenta
+ setw -g window-status-current-format '›#W'
+ setw -g window-status-format '›#W'
+
+#other options
+ set-option -g default-terminal "screen-256color"
+
+#create windows on start
+ new-session -n bash
+ neww -dn chat irssi
+ setw -qt chat monitor-activity on
+ neww -dn music "bash -ic ncmpcpp"
+ neww -dn files ranger
+ neww -dn news "bash -ic newsbeuter"
+ neww -dn calendar "bash -ic calcurse"
